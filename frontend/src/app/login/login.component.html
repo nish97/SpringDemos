@@ -1,0 +1,56 @@
+<div class="container modal-body" mat-dialog-content>
+  <div novalidate>
+    <form [formGroup]="formGroup" (ngSubmit)="submit(formGroup.value)">
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            required
+            matInput
+            placeholder="Email Address"
+            formControlName="email"/>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input
+            type="password"
+            required
+            matInput
+            placeholder="Password"
+            formControlName="password"/>
+        </mat-form-field>
+      </p>
+
+      <div class="social">
+        <div class="fcbk">
+          <a href="#" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i>
+          </a>
+        </div>
+        <div class="ggle">
+          <a
+            href="#"
+            class="google btn"
+            >
+            <i class="fa fa-google fa-fw"> </i>
+          </a>
+        </div>
+      </div>
+
+      <div class="button">
+        <button type="submit" mat-button>
+          <a class="log btn">
+            Login
+          </a>
+        </button>
+      </div>
+    </form>
+
+    <h4>
+      Don't have an account?<span id="reg" (click)="openRegister()">
+        Register Now</span>
+    </h4>
+  </div>
+</div>

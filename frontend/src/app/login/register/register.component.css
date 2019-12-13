@@ -1,0 +1,45 @@
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  opacity: 0.8;
+  font-size: 200%;
+  letter-spacing: 1px;
+  padding: 3px;
+}
+
+.container {
+  padding: 1px;
+  
+  
+}
+
+mat-toolbar{
+  background: linear-gradient(rgba(0, 17, 250, 0.877),rgba(128, 160, 248, 0.986));
+  color: white;
+  border-radius: 15px;
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  border-color: red;
+}
+
+.form-element {
+  padding: 5px 0px 25px 2px;
+  width: 100%;
+}
+
+.button {
+  /* background: linear-gradient(rgba(250, 0, 0, 0.877),rgba(248, 128, 128, 0.986)); */
+  background: linear-gradient(rgba(0, 17, 250, 0.877),rgba(128, 160, 248, 0.986));
+  width: 25%;
+  border-radius: 20px;
+  float: right;
+  transition: 1s;
+}
+
+.button:hover{
+  transform: scale(1.1);
+}

@@ -1,0 +1,98 @@
+version: '3.3'
+
+services:
+  config-server:
+    build: config-server/
+    container_name: config-server
+    restart: always
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    volumes:
+      - $HOME/data:/data/db
+      - $HOME/data:/data/bkp
+  mysql-docker:
+    image: mysql
+    container_name: mysql-docker
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql:/var/lib/mysql
+  eureka-server:
+    build: eureka-server/
+    container_name: eureka-server
+    restart: always
+    ports:
+      - 8085:8085
+  api-gateway:
+    build: api-gateway/
+    container_name: api-gateway
+    depends_on:
+      - config-server
+      - eureka-server
+      - authentication-service
+      - track-service
+      - mongo-express
+    restart: always
+    links:
+      - eureka-server
+    ports:
+      - 8082:8082
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    environment:
+      - ME_CONFIG_OPTIONS_EDITORTHEME=ambiance
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_BASICAUTH_USERNAME=root
+      - ME_CONFIG_BASICAUTH_PASSWORD=root
+    depends_on:
+      - mongo
+    ports:
+      - 8081:8081
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    restart: always
+    ports:
+      - 8000:8000
+      - 9000:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+  unknown-frontend:
+    build: frontend/
+    restart: always
+    container_name: unknown-frontend
+    ports:
+      - 4200:4200
+  authentication-service:
+    build: authentication-service/
+    restart: always
+    container_name: authentication-service
+    links:
+      - mysql-docker
+      - eureka-server
+      - config-server
+  track-service:
+    build: track-service/
+    restart: always
+    container_name: track-service
+    links:
+      - mysql-docker
+      - eureka-server
+      - config-server
+      - mongo
+volumes:
+  portainer_data:
+  mysql:
+
+
+
+
+
+
