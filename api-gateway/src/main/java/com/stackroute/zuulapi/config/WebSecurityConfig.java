@@ -25,8 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
     public void addCorsMappings(CorsRegistry registry) {
 //            registry.addMapping("/track/**").allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
 //                .exposedHeaders("Authorization");
-        registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
-                .exposedHeaders("Authorization");
+        registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS");
     }
 
     @Override
