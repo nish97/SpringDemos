@@ -12,12 +12,12 @@ export class LoginRegisterService {
     console.log( this.encryptionService.encrypt(payload.password));
     payload.password = this.encryptionService.encrypt(payload.password);
     console.log(payload);
-    return this.http.post('http://localhost:8082/auth/login', payload);
+    return this.http.post('https://localhost:8443/auth/login', payload);
   }
   register(payload): Observable<any> {
     console.log( this.encryptionService.encrypt(payload.password));
     payload.password = this.encryptionService.encrypt(payload.password);
     console.log(payload);
-    return this.http.post('http://localhost:8082/auth/register', payload);
+    return this.http.post('https://localhost:8443/auth/register', payload);
   }
 }

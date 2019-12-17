@@ -17,7 +17,8 @@ services:
     container_name: mysql-docker
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+     - MYSQL_ROOT_PASSWORD=root
+     - REQUIRE_SECURE_TRANSPORT=on
     volumes:
       - mysql:/var/lib/mysql
   eureka-server:
@@ -39,7 +40,7 @@ services:
     links:
       - eureka-server
     ports:
-      - 8082:8082
+      - 8443:8443
   mongo-express:
     image: mongo-express
     container_name: mongo-express

@@ -23,6 +23,6 @@ export class DashboardService {
         password: 'Nishanth97'
       };
       console.log(JSON.stringify(payload));
-      return this.http.post('http://localhost:8082/auth/test', JSON.stringify(payload), httpOptions);
+      return this.http.post('https://localhost:8443/auth/test', JSON.stringify(payload), httpOptions);
   }
 }
