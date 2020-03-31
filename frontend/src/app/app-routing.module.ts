@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthGuardService as AuthGuard} from './auth-guard-service';
+import { AuthGuardService as AuthGuard} from './auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { CookieService } from 'ngx-cookie-service';
 import { EncryptionService } from './encryption.service';
